@@ -1,7 +1,11 @@
 # P3-Tarefa-Dig
-1.Realiza unha consulta "dig danielcastelao.org" e identifica cada parte da resposta (IN, CNAME, A, QUERY SECTION, ANSWER SECTION, AUTHORITY SECTION, etc)
+1.Realiza unha consulta dig danielcastelao.org" e identifica cada parte da resposta (IN, CNAME, A, QUERY SECTION, ANSWER SECTION, AUTHORITY SECTION, etc)
 
-Despois de executar o comando dig danielcastelao.org, veremos diferentes partes como o header, a seccion de consultas ou question section, a sección de respostas ou answer section e as sección de estadisticas ou stadistics. A continuación se mostrará o que aparece en cada una de ela.
+**Despois de executar o comando** 
+```
+dig danielcastelao.org, 
+```
+**veremos diferentes partes como o header, a seccion de consultas ou question section, a sección de respostas ou answer section e as sección de estadisticas ou stadistics. A continuación se mostrará o que aparece en cada una de ela.**
 
 Header:
 ; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> danielcastelao.org
@@ -29,11 +33,11 @@ Statistics:
 ;; WHEN: Fri Oct 04 21:04:13 CEST 2024
 ;; MSG SIZE rcvd: 63
 
-No meu caso non hai o apartado de AUTHORITY SECTION.
+**No meu caso non aparece o apartado de AUTHORITY SECTION.**
 
 2.Realiza consutas dos seguintes nomes e identifica as diferencias: moodle.danielcastelao.org, www.danielcastelao.org
 
-Ao realizar as consultas especificadas as diferencias vense reflexadas no apartado de AUTHORITY SECTION. Neste caso aparece o seguinte:
+**Ao realizar as consultas especificadas as diferencias vense reflexadas no apartado de AUTHORITY SECTION. Neste caso aparece o seguinte:**
 ;; AUTHORITY SECTION:
 danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 
@@ -41,8 +45,12 @@ A diferencia é que no moodle aparece o tipo de rexistro "NS" que indica os serv
 
 3.Averigua o nome e IP dos servidores de DNS autoritativos de www.danielcastelao.org, por qué soen ser 2 servidores autoritativos?
 
-Para averiguar o nome e IP dos servidores de DNS escribiremos dous comandos, o primeriro para averiguar o nome e o seguinte para obter a IP a través de esos nomes.
-O primeiro é dig ns danielcastelo.org, con este podremos obter os nomes dos 2 servidores autoritativos.
+**Para averiguar o nome e IP dos servidores de DNS escribiremos dous comandos, o primeriro para averiguar o nome e o seguinte para obter a IP a través de esos nomes.**
+O primeiro é
+```
+dig ns danielcastelo.org
+```
+**Con este podremos obter os nomes dos 2 servidores autoritativos.**
 ;; ANSWER SECTION:
 danielcastelao.org. 900 IN NS ns2.hover.com.
 danielcastelao.org. 900 IN NS ns1.hover.com.
@@ -57,7 +65,8 @@ Soen ser dous servidores por diferentes motivos entre eles:
 
 4.Realiza as consultas de nomes inversas: 130.206.164.68 e de outras dúas IPs que se che ocorran.
 
-Para realizar unha consulta inversa o parametro é -x. O comando reultante é dig -x 130.206.164.68. ;; ANSWER SECTION:
+**Para realizar unha consulta inversa o parametro é -x. O comando reultante é dig -x 130.206.164.68.**
+;; ANSWER SECTION:
 68.164.206.130.in-addr.arpa. 7200 IN PTR pluto.tlm.unavarra.es.
 68.164.206.130.in-addr.arpa. 7200 IN PTR s164m68.unavarra.es.
 
@@ -69,16 +78,22 @@ dig -x 130.206.163.68
 
 5.A qué servidor DNS estás consultando? Cómo o podes cambiar sen tocar os ficheiros de configuración do sistema?
 
-Para saber a que servidor DNS estou a consultar teño que realizar o comando cat /etcresolv.conf. Este comando accede a un arquivo de configuración onde se definen os servidores DNS que o sistema usa para resolver nomes do dominio.
-Para cambialo podemos utilziar o comando dig @8.8.8.8 www.danielcastelao.org, o simbolo "@" indica o servidor DNS ao que se debe enviar a consulta, neste caso se está utilizando o servidor DNS público de Google.
+**Para saber a que servidor DNS estou a consultar teño que realizar o comando cat /etcresolv.conf. Este comando accede a un arquivo de configuración onde se definen os servidores DNS que o sistema usa para resolver nomes do dominio.**
+**Para cambialo podemos utilziar o comando dig @8.8.8.8 www.danielcastelao.org, o simbolo "@" indica o servidor DNS ao que se debe enviar a consulta, neste caso se está utilizando o servidor DNS público de Google.**
 
 6.Obtén o rexistro SOA (Start of Authority) do dominio moodle.danielcastelao.org preguntándolle ó servidor DNS de google e logo preoguntándollo directamente ó servidor primario do dominio danielcastelao.org.
 
-Para consultar o rexistro SOA preguntandolle ó servidor DNS de Google debemos escribir o comando dig @8.8.8.8 SOA moodle.danielcastelao.org
+Para consultar o rexistro SOA preguntandolle ó servidor DNS de Google debemos escribir o comando 
+```
+dig @8.8.8.8 SOA moodle.danielcastelao.org
+```
 ;; AUTHORITY SECTION:
 danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 
-E preguntandolle directamente ó servidor primario do dominio danielcastelao.org o comando dig @ns1.hover.com. SOA moodle.danielcastelao.org.
+**E preguntandolle directamente ó servidor primario do dominio danielcastelao.org o comando**
+```
+ dig @ns1.hover.com. SOA moodle.danielcastelao.org.
+```
 ;; AUTHORITY SECTION:
 danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 1800 900 604800 300
 

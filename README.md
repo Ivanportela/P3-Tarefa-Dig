@@ -99,6 +99,12 @@ danielcastelao.org. 300 IN SOA ns1.hover.com. dnsmaster.hover.com. 1720467415 18
 
 7.Consulta a IP de www.elpais.com. Cánto tempo queda almaceado o rexistro de recurso no DNS local?, se preguntas ó DNS local por este recurso, qué observas no TTL do rexistro?
 
+**Para obter a IP e os demais datos da web do pais empregaremos o seguinte comando:**
+```
+dig www.elpais.com
+```
+**Obteremos o parametros necesarios para esponder no meu caso a IP do server que me aparece é: 127.0.0.53 e empregou un tempo de rexistro de 23 msecs.**
+
 8.Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
 
 9.Determina o TTL máximo (original) dun nome de dominio.

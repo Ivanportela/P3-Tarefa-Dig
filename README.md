@@ -107,14 +107,66 @@ dig www.elpais.com
 
 8.Busca o TTL de distintos nomes de dominio de servicios que escollas, a qué se poden deber as diferencias?
 
+**Para a proba ditos se seleccionaron google, facebook e amazon. As diferencias no TTl poden deberse á política de cache do servicio ou os servizos con contenido dinámico soen ter TTl máis baixos para actualziarse con máis frecuencia.**
+
 9.Determina o TTL máximo (original) dun nome de dominio.
+
+**Fixemos unha consulta a microsoft utilizando o comando.**
+```
+dig www.microsoft.com
+```
+**O resultado foi de 3578 mcs**
 
 10.Averigua cántas máquinas con distintas IPs están detrás do dominio web www.google.es, sempre son as mesmas e na mesma orde? por qué?
 
+**Para saber cantas máquinas estan detras de un dominio debemos facer o seguinte comando:**
+```
+dig www.google.es
+```
+**Para responder a pregunta si, si deberian de ser sempre as mismas maquinas xa que as veces que probei eu recibía sempre o mesmo resultado.**
+
 11.Pregunta o mesmo a un server raiz (J.ROOTSERVERS.NET por exemplo) e comproba na resposta se o server acepta o modo recursivo
+
+**Neste caso a facer o comando dig a propia raiz debemos poñer o seguinte**
+```
+dig A J.ROOTSERVERS.net
+```
+**Logo podemos observar as diferentes IPs os meu resultados foros os seguintes**
+J.ROOTSERVERS.net. 3600 IN A 15.197.204.56
+J.ROOTSERVERS.net. 3600 IN A 3.33.243.145
+**Podemos realizar esto de manera recursiva co seguinte método**
+```
+dig -x 15.197.204.56
+```
+e
+```
+dig -x 3.33.243.145
+```
 
 12.Se queremos ver tóda-las queries que fai o servidor de DNS, qué opción temos que usar? averigua a IP de www.timesonline.co.uk, especifica os pasos dados
 
+**Para ver todas as respuestas do servidor, debemos poñer o comando de dig con un +trace, por exemplo nesta direccion**
+```
+dig +trace www.mediavida.com
+```
+
 13.Usando a información dispoñible a traveso do DNS especifica a máquina (nome e IP) ou máquinas que actúan como servers de correo do dominio danielcastelao.org
+**Para descubrir estas maquinas debemos comezar polo comando :**
+```
+dig MX danielcastelao.org
+```
+**E a resposta e a seguinte**
+danielcastelao.org. 900 IN MX 130 aspmx4.googlemail.com.
+danielcastelao.org. 900 IN MX 90 alt1.aspmx.l.google.com.
+danielcastelao.org. 900 IN MX 110 aspmx2.googlemail.com.
+danielcastelao.org. 900 IN MX 100 alt2.aspmx.l.google.com.
+danielcastelao.org. 900 IN MX 140 aspmx5.googlemail.com.
+danielcastelao.org. 900 IN MX 80 aspmx.l.google.com.
+danielcastelao.org. 900 IN MX 120 aspmx3.googlemail.com.
+
+
+
+
+
 
 14.Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?

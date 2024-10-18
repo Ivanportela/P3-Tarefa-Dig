@@ -174,4 +174,4 @@ danielcastelao.org. 900 IN MX 120 aspmx3.googlemail.com.
 
 
 
-14.Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
+

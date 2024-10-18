@@ -165,7 +165,12 @@ danielcastelao.org. 900 IN MX 80 aspmx.l.google.com.
 danielcastelao.org. 900 IN MX 120 aspmx3.googlemail.com.
 
 
+14.Podes obter os rexistros AAAA de www.facebook.com? a qué corresponden?
 
+**Los registros AAAA en DNS corresponden a las direcciones IPv6 asociadas con un dominio. Para obtener los registros AAAA de facebook utilizaremos o seguinte comando :**
+```
+ dig AAAA www.facebook.com
+ ``` 
 
 
 
